@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.emp.web.service.EmpMapper">
+	<select id="findEmp"
+		resultType="co.micol.prj.emp.web.service.Emp">
+		SELECT * FROM EMPLOYEES
+	</select>
+
+	<select id="findDept"
+		resultType="co.micol.prj.emp.web.service.Dept">
+		SELECT * FROM DEPARTMENTS
+	</select>
+	<select id="findDeptById"
+		resultType="co.micol.prj.emp.web.service.Dept" 
+		parameterType="String">
+		SELECT *
+		FROM DEPARTMENTS
+		where department_id = #{id}
+	</select>
+	<update id="updateDept"
+		parameterType="co.micol.prj.emp.web.service.Dept">
+		update DEPARTMENTS
+		set department_name = #{department_name}
+		where department_id = #{department_id}
+	</update>
+	<delete id="deleteDept" parameterType="String">
+		delete departments
+		where
+		department_id = #{value}
+	</delete>
+	<insert id="insertDept"
+		parameterType="co.micol.prj.emp.web.service.Dept">
+		insert into DEPARTMENTS
+			(department_id,
+			department_name)
+		values(#{department_id},
+			#{department_name})
+	</insert>
+
+</mapper>
