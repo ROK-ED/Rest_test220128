@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <input name="kor"><input name="eng">
 <button id="btnAdd" type="button">추가</button>
+
 <button id="btnScore" type="button">국어성적합계</button>
 <table>
    <thead>
@@ -41,14 +43,24 @@
 		var list = $("tbody").find("tr").find("td:nth-child(1)");
 		var sum = 0;
 		for(score of list){
-			console.log(score.innerHTML);
+			//console.log(score.innerHTML);
 			sum += parseInt(score.innerHTML);
 		}
 		alert(sum);		
 	});
 	//추가 버튼을 클릭하면 input 태그의 값으로 <tr> 생성해서 테이블 추가
 	$("#btnAdd").on("click", function () {
-		console.log($(this).closest(".acc"));
+		//debugger
+		console.log($('[name="kor"]').val());
+		console.log($('[name="eng"]').val());
+		var tr = $("<tr>");
+		var kor = $("<td>").html($('[name="kor"]').val());
+		tr.append(kor);
+		var eng = $("<td>").html($('[name="eng"]').val());
+		tr.append(eng);
+		
+		$("tbody").append(tr);
+		
 	});
 </script>
 </body>
